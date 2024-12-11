@@ -74,11 +74,11 @@ class QueryService:
         labels = np.zeros(len(ids))
         unchanged_iter_count = 0  # Counter for iterations without significant change
 
-        for iteration in tqdm(range(max_iter)):
+        for iteration in range(max_iter):
             # Step 3.1: Assign each point to the closest centroid
             i = 0
             all_cluster_points = [[] for _ in range(n_clusters)]
-            for id in ids:
+            for id in tqdm(ids, desc=f'iteration {iteration}'):
                 current_doc = self.collection_doc.find_one({'_id': id['_id']})
                 #distances = np.linalg.norm(np.array(current_doc['embedding']) - centroids, axis=1)  # Calculate distance to each centroid
                 current_doc_embedding = np.array(current_doc['embedding'])
