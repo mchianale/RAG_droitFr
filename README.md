@@ -21,7 +21,7 @@ Ce projet vise à développer une solution de recherche et d'extraction d'inform
     - [Comparaison des documents avec la distance cosinus](#2-comparaison-des-documents-avec-la-distance-cosinus)
     - [Réduction de l'espace de recherche avec KNN](#3-réduction-de-lespace-de-recherche-avec-knn)
     - [Évaluation des clusters](#4-évaluation-des-clusters)
-    - [Intérêt du système de clustering](#5-intérêt-du-système-de-clustering)
+    - [Intérêt du système de clustering](#5-intérêt)
 5. [API](#api)
     - [GET /query](#1-get-query)
     - [POST /clusterize](#2-post-clusterize)
