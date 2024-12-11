@@ -149,7 +149,8 @@ En résumé, en passant d'une approche brute force à une approche avec clusteri
 
 ## API
 L'API de ce projet est construite avec **FastAPI** et permet d'interagir avec le service de recherche de documents. Les différentes routes suivantes sont définies pour effectuer des tâches spécifiques, telles que la recherche de documents, la gestion des clusters, l'ajout de nouveaux documents, etc.
-Voir les méthodes : [app](https://github.com/mchianale/RAG_droitFr/tree/main/app)
+
+**Voir les méthodes : [app](https://github.com/mchianale/RAG_droitFr/tree/main/app)**
 
 ---
 
