@@ -1,0 +1,12 @@
+torch
+transformers
+pymongo
+numpy
+fastapi
+sentence-transformers
+PyMuPDF
+tqdm
+requests
+beautifulsoup4
+wikipedia-api
+uvicorn
