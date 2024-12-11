@@ -1,5 +1,15 @@
 
 # Projet : Création d'un RAG (Retrieve and Generate) autour du droit français
+Ce projet vise à développer une solution de recherche et d'extraction d'informations basée sur les textes du droit français. Il s'agit d'un système intelligent de récupération de données juridiques, avec l'objectif de faciliter la recherche d'informations pertinentes en utilisant des techniques avancées de traitement du langage naturel (NLP) et de clustering. Le projet se divise en plusieurs étapes clés, visant à optimiser l'accès et la manipulation des données juridiques.
+
+### Étapes du projet :
+1. **Récupération des données** : Collecte des textes juridiques et des documents relatifs au droit français (**~166722 documents**).
+2. **Stockage des données** : Mise en place d'une base de données efficace pour stocker et gérer les documents récupérés.
+3. **Système de recherche par similarité** : Mise en place d'un moteur de recherche basé sur la similarité sémantique, permettant de trouver des documents pertinents. Cette recherche est optimisée par un processus de clustering pour réduire l'espace de recherche.
+4. **Création d'une API (FastAPI)** : Développement d'une API permettant d'interroger et d'insérer des documents dans le système, facilitant ainsi l'accès et la gestion des données juridiques.
+
+---
+
 # Sommaire
 1. [Run](#run)
     - [Installation des dépendances](#installation-des-dépendances)
@@ -30,16 +40,6 @@
     - [Évaluation du système de retrieval du RAG avec un jeu de tests](#évaluation-du-système-de-retrieval-du-rag-avec-un-jeu-de-tests)
     - [Nouveau système de base de données orienté vectorielle (FAISS) et GraphRAG](#nouveau-système-de-base-de-données-orienté-vectorielle-faiss-et-graphrag)
       
----
-
-Ce projet vise à développer une solution de recherche et d'extraction d'informations basée sur les textes du droit français. Il s'agit d'un système intelligent de récupération de données juridiques, avec l'objectif de faciliter la recherche d'informations pertinentes en utilisant des techniques avancées de traitement du langage naturel (NLP) et de clustering. Le projet se divise en plusieurs étapes clés, visant à optimiser l'accès et la manipulation des données juridiques.
-
-### Étapes du projet :
-1. **Récupération des données** : Collecte des textes juridiques et des documents relatifs au droit français (**~166722 documents**).
-2. **Stockage des données** : Mise en place d'une base de données efficace pour stocker et gérer les documents récupérés.
-3. **Système de recherche par similarité** : Mise en place d'un moteur de recherche basé sur la similarité sémantique, permettant de trouver des documents pertinents. Cette recherche est optimisée par un processus de clustering pour réduire l'espace de recherche.
-4. **Création d'une API (FastAPI)** : Développement d'une API permettant d'interroger et d'insérer des documents dans le système, facilitant ainsi l'accès et la gestion des données juridiques.
-
 ---
 
 ## Run
