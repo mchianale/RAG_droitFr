@@ -1,4 +1,36 @@
+
 # Projet : Création d'un RAG (Retrieve and Generate) autour du droit français
+# Sommaire
+1. [Run](#run)
+    - [Installation des dépendances](#installation-des-dépendances)
+    - [Lancer le système avec Docker](#lancer-le-système-avec-docker)
+    - [Initialiser la base de données](#initialiser-la-base-de-données)
+2. [Récupération des données](#récupération-des-données)
+    - [Extraction des articles en vigueur des codes](#extraction-des-articles-en-vigueur-des-codes)
+    - [Extraction d'informations liées au droit Français](#extraction-dinformations-liées-au-droit-français)
+3. [Récupérer un échantillon de données](#récupérer-un-échantillon-de-données)
+4. [Système de recherche par similarité](#système-de-recherche-par-similarité)
+    - [Représentation des documents avec des embeddings](#représentation-des-documents-avec-des-embeddings)
+    - [Comparaison des documents avec la distance cosinus](#comparaison-des-documents-avec-la-distance-cosinus)
+    - [Réduction de l'espace de recherche avec KNN](#réduction-de-lespace-de-recherche-avec-knn)
+    - [Évaluation des clusters](#évaluation-des-clusters)
+    - [Intérêt du système de clustering](#intérêt-du-système-de-clustering)
+5. [API](#api)
+    - [GET /query](#get-query)
+    - [POST /clusterize](#post-clusterize)
+    - [POST /insert_new_document](#post-insert_new_document)
+    - [POST /insert_new_documents](#post-insert_new_documents)
+    - [GET /evaluate_clusters](#get-evaluate_clusters)
+    - [POST /reset](#post-reset)
+    - [GET /info](#get-info)
+6. [Amélioration / À faire](#amélioration-à-faire)
+    - [Améliorer le clustering (KNN)](#améliorer-le-clustering-knn)
+    - [Interface ou outil de visualisation](#interface-ou-outil-de-visualisation)
+    - [Utilisation de LLAMA 3.2 1B en local pour créer un chatbot](#utilisation-de-llama-32-1b-en-local-pour-créer-un-chatbot)
+    - [Évaluation du système de retrieval du RAG avec un jeu de tests](#évaluation-du-système-de-retrieval-du-rag-avec-un-jeu-de-tests)
+    - [Nouveau système de base de données orienté vectorielle (FAISS) et GraphRAG](#nouveau-système-de-base-de-données-orienté-vectorielle-faiss-et-graphrag)
+      
+---
 
 Ce projet vise à développer une solution de recherche et d'extraction d'informations basée sur les textes du droit français. Il s'agit d'un système intelligent de récupération de données juridiques, avec l'objectif de faciliter la recherche d'informations pertinentes en utilisant des techniques avancées de traitement du langage naturel (NLP) et de clustering. Le projet se divise en plusieurs étapes clés, visant à optimiser l'accès et la manipulation des données juridiques.
 
@@ -26,12 +58,6 @@ python populate_db.py
 ``` 
 **Warning** : Assurez-vous que MongoDB soit bien lancé et instancié avant d'exécuter ce script.
 
-
-python get_data\createDroitData.py
-docker-compose up -d
-python populate_db.py
-uvicorn app.main:app --reload
-
 ---
 
 ## Récupération des données
@@ -43,14 +69,15 @@ python get_data/createDroitData.py
 Cela permet de sauvegarder les données au format `json`.
 ### Extraction des articles en vigueur des codes
 - Extraction des articles à partir des fichiers PDF sur [LegiFrance](https://www.legifrance.gouv.fr/liste/code?etatTexte=VIGUEUR&etatTexte=VIGUEUR_DIFF&page=1#code)
-- voir [init_code.py](C:\Users\matte\Desktop\rag\get_data\init_corpus.py)
+- voir [init_code.py](https://github.com/mchianale/RAG_droitFr/blob/main/get_data/init_code.py)
 ### Extraction d'informations liées au droit Francais
 - Extraction des données à l'aide de la bibliothèque `wikipedia-api`.
 - Extraction des articles liés au droit français depuis [Wikipedia](https://fr.wikipedia.org/wiki/Cat%C3%A9gorie:Portail:Droit_fran%C3%A7ais/Articles_li%C3%A9s)
+- voir [init_corpus.py](https://github.com/mchianale/RAG_droitFr/blob/main/get_data/init_corpus.py)
 
 ## Récupérer un échantillon de données
 
-Crée un fichier Python qui récupère `N` données choisies aléatoirement (à fixer dans [create_sample.py]()).
+Crée un fichier Python qui récupère `N` données choisies aléatoirement (à fixer dans [create_sample.py](https://github.com/mchianale/RAG_droitFr/blob/main/get_data/create_sample.py)).
 
 ```bash
 python get_data/create_sample.py
@@ -222,6 +249,10 @@ Voici une liste des améliorations et des tâches futures à mettre en place pou
 
 Ces améliorations permettront d'augmenter la performance du système, d'enrichir l'interaction utilisateur et de rendre le projet plus robuste et scalable à mesure que les données et les fonctionnalités se développent.
 
+python get_data\createDroitData.py
+docker-compose up -d
+python populate_db.py
+uvicorn app.main:app --reload
 
 backend_service:
     container_name: backend_service
