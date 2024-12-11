@@ -11,11 +11,11 @@ Ce projet vise à développer une solution de recherche et d'extraction d'inform
 ---
 
 # Sommaire
-1. [Run](##run)
-2. [Récupération des données](##récupération-des-données)
-    - [Extraction des articles en vigueur des codes](###extraction-des-articles-en-vigueur-des-codes)
-    - [Extraction d'informations liées au droit Français](###extraction-dinformations-liées-au-droit-français)
-3. [Récupérer un échantillon de données](#récupérer-un-échantillon-de-données)
+1. [Run](#run)
+2. [Récupération des données](#récupération-des-données)
+    - [Extraction des articles en vigueur des codes](#extraction-des-articles-en-vigueur-des-codes)
+    - [Extraction d'informations liées au droit Français](#extraction-dinformations-liées-au-droit-français)
+    - [Récupérer un échantillon de données](#récupérer-un-échantillon-de-données)
 4. [Système de recherche par similarité](#système-de-recherche-par-similarité)
     - [Représentation des documents avec des embeddings](#représentation-des-documents-avec-des-embeddings)
     - [Comparaison des documents avec la distance cosinus](#comparaison-des-documents-avec-la-distance-cosinus)
@@ -72,7 +72,7 @@ Cela permet de sauvegarder les données au format `json`.
 - Extraction des articles liés au droit français depuis [Wikipedia](https://fr.wikipedia.org/wiki/Cat%C3%A9gorie:Portail:Droit_fran%C3%A7ais/Articles_li%C3%A9s)
 - voir [init_corpus.py](https://github.com/mchianale/RAG_droitFr/blob/main/get_data/init_corpus.py)
 
-## Récupérer un échantillon de données
+### Récupérer un échantillon de données
 
 Crée un fichier Python qui récupère `N` données choisies aléatoirement (à fixer dans [create_sample.py](https://github.com/mchianale/RAG_droitFr/blob/main/get_data/create_sample.py)).
 
