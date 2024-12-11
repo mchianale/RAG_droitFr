@@ -11,13 +11,10 @@ Ce projet vise à développer une solution de recherche et d'extraction d'inform
 ---
 
 # Sommaire
-1. [Run](#run)
-    - [Installation des dépendances](#installation-des-dépendances)
-    - [Lancer le système avec Docker](#lancer-le-système-avec-docker)
-    - [Initialiser la base de données](#initialiser-la-base-de-données)
-2. [Récupération des données](#récupération-des-données)
-    - [Extraction des articles en vigueur des codes](#extraction-des-articles-en-vigueur-des-codes)
-    - [Extraction d'informations liées au droit Français](#extraction-dinformations-liées-au-droit-français)
+1. [Run](##run)
+2. [Récupération des données](##récupération-des-données)
+    - [Extraction des articles en vigueur des codes](###extraction-des-articles-en-vigueur-des-codes)
+    - [Extraction d'informations liées au droit Français](###extraction-dinformations-liées-au-droit-français)
 3. [Récupérer un échantillon de données](#récupérer-un-échantillon-de-données)
 4. [Système de recherche par similarité](#système-de-recherche-par-similarité)
     - [Représentation des documents avec des embeddings](#représentation-des-documents-avec-des-embeddings)
@@ -228,6 +225,8 @@ Permet d'obtenir des informations sur l'état actuel des données et des cluster
 
 **Réponse :**  
 Un objet JSON contenant le nombre total de documents dans la base de données ainsi que des informations détaillées sur le nombre de documents dans chaque cluster, le cas échéant.
+
+---
 
 ## Amélioration / À faire
 Voici une liste des améliorations et des tâches futures à mettre en place pour améliorer le projet :
