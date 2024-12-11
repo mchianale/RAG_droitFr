@@ -133,7 +133,7 @@ Cela signifie que pour chaque requête, nous devons effectuer **n** comparaisons
 En utilisant le **clustering**, on divise l'ensemble des documents en **m** clusters. Au lieu de comparer la requête avec tous les documents, on compare d'abord la requête avec les **centroids** des clusters à l'aide de la **similarité cosinus**. Ensuite, on choisit le cluster le plus pertinent, et on ne compare la requête qu'avec les documents à l'intérieur de ce cluster, réduisant ainsi l'espace de recherche.
 
 - **Étape 1** : Comparaison de la requête avec les centroids des **m** clusters (complexité **O(m)**).
-- **Étape 2** : Comparaison de la requête avec les documents du cluster sélectionné, où **p** est le nombre de documents dans ce cluster. On suppose que, de manière idéale, les données sont réparties équitablement entre les clusters, donc **p ~= n // m **.
+- **Étape 2** : Comparaison de la requête avec les documents du cluster sélectionné, où **p** est le nombre de documents dans ce cluster. On suppose que, de manière idéale, les données sont réparties équitablement entre les clusters, donc p ~= n // m.
 
 Ainsi, la complexité totale de la méthode **clustering** devient :
 
