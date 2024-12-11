@@ -17,25 +17,25 @@ Ce projet vise à développer une solution de recherche et d'extraction d'inform
     - [Extraction d'informations liées au droit Français](#extraction-dinformations-liées-au-droit-français)
     - [Récupérer un échantillon de données](#récupérer-un-échantillon-de-données)
 4. [Système de recherche par similarité](#système-de-recherche-par-similarité)
-    - [Représentation des documents avec des embeddings](#représentation-des-documents-avec-des-embeddings)
-    - [Comparaison des documents avec la distance cosinus](#comparaison-des-documents-avec-la-distance-cosinus)
-    - [Réduction de l'espace de recherche avec KNN](#réduction-de-lespace-de-recherche-avec-knn)
-    - [Évaluation des clusters](#évaluation-des-clusters)
-    - [Intérêt du système de clustering](#intérêt-du-système-de-clustering)
+    - [Représentation des documents avec des embeddings](#1-représentation-des-documents-avec-des-embeddings)
+    - [Comparaison des documents avec la distance cosinus](#2-comparaison-des-documents-avec-la-distance-cosinus)
+    - [Réduction de l'espace de recherche avec KNN](#3-réduction-de-lespace-de-recherche-avec-knn)
+    - [Évaluation des clusters](#4-évaluation-des-clusters)
+    - [Intérêt du système de clustering](#5-intérêt-du-système-de-clustering)
 5. [API](#api)
-    - [GET /query](#get-query)
-    - [POST /clusterize](#post-clusterize)
-    - [POST /insert_new_document](#post-insert_new_document)
-    - [POST /insert_new_documents](#post-insert_new_documents)
-    - [GET /evaluate_clusters](#get-evaluate_clusters)
-    - [POST /reset](#post-reset)
-    - [GET /info](#get-info)
+    - [GET /query](#1-get-query)
+    - [POST /clusterize](#2-post-clusterize)
+    - [POST /insert_new_document](#3-post-insert_new_document)
+    - [POST /insert_new_documents](#4-post-insert_new_documents)
+    - [GET /evaluate_clusters](#5-get-evaluate_clusters)
+    - [POST /reset](#6-post-reset)
+    - [GET /info](#7-get-info)
 6. [Amélioration / À faire](#amélioration-à-faire)
-    - [Améliorer le clustering (KNN)](#améliorer-le-clustering-knn)
-    - [Interface ou outil de visualisation](#interface-ou-outil-de-visualisation)
-    - [Utilisation de LLAMA 3.2 1B en local pour créer un chatbot](#utilisation-de-llama-32-1b-en-local-pour-créer-un-chatbot)
-    - [Évaluation du système de retrieval du RAG avec un jeu de tests](#évaluation-du-système-de-retrieval-du-rag-avec-un-jeu-de-tests)
-    - [Nouveau système de base de données orienté vectorielle (FAISS) et GraphRAG](#nouveau-système-de-base-de-données-orienté-vectorielle-faiss-et-graphrag)
+    - [Améliorer le clustering (KNN)](#1-améliorer-le-clustering-knn)
+    - [Interface ou outil de visualisation](#2-interface-ou-outil-de-visualisation)
+    - [Utilisation de LLAMA 3.2 1B en local pour créer un chatbot](#3-utilisation-de-llama-32-1b-en-local-pour-créer-un-chatbot)
+    - [Évaluation du système de retrieval du RAG avec un jeu de tests](#4-évaluation-du-système-de-retrieval-du-rag-avec-un-jeu-de-tests)
+    - [Nouveau système de base de données orienté vectorielle (FAISS) et GraphRAG](#5-nouveau-système-de-base-de-données-orienté-vectorielle-faiss-et-graphrag)
       
 ---
 
@@ -125,7 +125,7 @@ Les performances sont mesurées pour chaque paire de clusters en calculant la si
 
 L'intérêt du système de recherche par similarité avec **clustering** réside dans l'optimisation de la recherche, en particulier lorsqu'on doit comparer une requête avec un grand nombre de documents. La comparaison brute avec tous les documents dans la base de données peut être coûteuse en termes de temps de calcul, tandis que le **clustering** permet de réduire cet espace de recherche et d'améliorer l'efficacité. 
 
-#### Comparaison des complexités
+**Comparaison des complexités**
 
 Pour une même recherche de similarité d'une requête avec l'ensemble des données (\(n\) documents), voici la comparaison des deux méthodes :
 
