@@ -173,8 +173,10 @@ Voici une liste des améliorations et des tâches futures à mettre en place pou
 ### 4. **Évaluation du système de retrieval du RAG avec un jeu de tests**
    - Implémenter un jeu de tests pour évaluer le système de récupération d'informations (retrieval) dans le contexte du **RAG (Retrieval-Augmented Generation)**. Cela permettra de mesurer la performance du système en termes de précision, de rappel, et de F1-score, et d'ajuster les paramètres du modèle en fonction des résultats obtenus.
 
-### 5. **Nouveau système de base de données orienté vectorielle (FAISS) et GraphRAG**
-   - Passer à un système de base de données plus adapté aux embeddings et aux recherches vectorielles, comme **FAISS**. Ce type de base de données permettra des recherches plus rapides et plus scalables. Il serait également intéressant d'explorer des systèmes de **GraphRAG**, qui utilise des métadonnées et des graphes pour améliorer les requêtes et la récupération d'informations.
+### 5. **Nouveau système de base de données orienté vectorielle**
+   - Passer à un système de base de données plus adapté aux embeddings et aux recherches vectorielles, comme **FAISS**. Ce type de base de données permettra des recherches plus rapides et plus scalables.
+   - Il serait également intéressant d'explorer des systèmes de **GraphRAG**, qui utilise des métadonnées et des graphes pour améliorer les requêtes et la récupération d'informations.
+   - Ajout des metadonnées dans la BD. (nom d'article, code etc..)
 
 Ces améliorations permettront d'augmenter la performance du système, d'enrichir l'interaction utilisateur et de rendre le projet plus robuste et scalable à mesure que les données et les fonctionnalités se développent.
 
