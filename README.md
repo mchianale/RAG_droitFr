@@ -28,7 +28,7 @@ Ce projet vise à développer une solution de recherche et d'extraction d'inform
     - [Interface ou outil de visualisation](#2-interface-ou-outil-de-visualisation)
     - [Utilisation de LLAMA 3.2 1B en local pour créer un chatbot](#3-utilisation-de-llama-32-1b-en-local-pour-créer-un-chatbot)
     - [Évaluation du système de retrieval du RAG avec un jeu de tests](#4-évaluation-du-système-de-retrieval-du-rag-avec-un-jeu-de-tests)
-    - [Nouveau système de base de données orienté vectorielle (FAISS) et GraphRAG](#5-nouveau-système-de-base-de-données-orienté-vectorielle-faiss-et-graphrag)
+    - [Nouveau système de base de données orienté vectorielle](#5-nouveau-système-de-base-de-données-orienté-vectorielle)
       
 ---
 
