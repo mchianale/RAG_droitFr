@@ -5,7 +5,6 @@ import numpy as np
 from sentence_transformers import SentenceTransformer
 import time 
 from tqdm import tqdm
-from threading import Thread
 from sklearn.cluster import MiniBatchKMeans
 
 class QueryService:

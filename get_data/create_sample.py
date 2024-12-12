@@ -6,7 +6,7 @@ from tqdm import tqdm
 SCRIPT_PATH = os.path.dirname(os.path.abspath(__file__))  # this file path
 SAMPLE_PATH = os.path.join(SCRIPT_PATH, 'sample.json')
 INFO_PATH = os.path.join(SCRIPT_PATH, 'data/data_info.json')
-N = 3000
+N = 10
 
 def create_sample(size, sample_path):
     data_info_file = open(INFO_PATH, 'r',encoding='utf-8')
