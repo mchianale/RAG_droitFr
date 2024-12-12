@@ -33,6 +33,15 @@ Ce projet vise à développer une solution de recherche et d'extraction d'inform
         "cosine_similarity": 0.8622493270557036
 }
 ```
+
+4. `Qui est Georges Vedel ?` :
+```json
+{
+        "text": "Georges Vedel, né le 5 juillet 1910 à Auch (Gers) et mort le 21 février 2002 dans le 7e arrondissement de Paris, est un professeur français de droit public.\nIl est, selon Guy Carcassonne et Olivier Duhamel, le « refondateur du droit public » en France.",
+        "cosine_similarity": 0.8622493270557036
+}
+```
+
 ---
 
 # Sommaire
