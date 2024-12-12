@@ -3,7 +3,7 @@
 Ce projet vise à développer une solution de recherche et d'extraction d'informations basée sur les textes du droit français. Il s'agit d'un système intelligent de récupération de données juridiques, avec l'objectif de faciliter la recherche d'informations pertinentes en utilisant des techniques avancées de traitement du langage naturel (NLP) et de clustering. Le projet se divise en plusieurs étapes clés, visant à optimiser l'accès et la manipulation des données juridiques.
 
 ### Étapes du projet :
-1. **Récupération des données** : Collecte des textes juridiques et des documents relatifs au droit français (**~166722 documents**).
+1. **Récupération des données** : Collecte des textes juridiques et des documents relatifs au droit français (**~166722 documents**) sur `LegiFrance` et `Wikipedia`.
 2. **Stockage des données** : Mise en place d'une base de données efficace pour stocker et gérer les documents récupérés.
 3. **Système de recherche par similarité** : Mise en place d'un moteur de recherche basé sur la similarité sémantique, permettant de trouver des documents pertinents. Cette recherche est optimisée par un processus de clustering pour réduire l'espace de recherche.
 4. **Création d'une API (FastAPI)** : Développement d'une API permettant d'interroger et d'insérer des documents dans le système, facilitant ainsi l'accès et la gestion des données juridiques.
@@ -179,9 +179,4 @@ Voici une liste des améliorations et des tâches futures à mettre en place pou
    - Ajout des metadonnées dans la BD. (nom d'article, code etc..)
 
 Ces améliorations permettront d'augmenter la performance du système, d'enrichir l'interaction utilisateur et de rendre le projet plus robuste et scalable à mesure que les données et les fonctionnalités se développent.
-
-python get_data\createDroitData.py
-docker-compose up -d
-python populate_db.py
-uvicorn app.main:app --reload
 
