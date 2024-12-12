@@ -28,6 +28,7 @@ Permet de créer des clusters de documents en utilisant l'algorithme de clusteri
 - `max_iter` (int, optionnel, par défaut 300) : Le nombre maximum d'itérations pour le clustering.
 - `tolerance` (float, optionnel, par défaut 1e-4) : La tolérance pour la convergence des centroids.
 - `patience` (int, optionnel, par défaut 10) : Le nombre d'itérations sans changement significatif avant l'arrêt.
+- `chunk_size` (int, optionnel, par défaut 32) : Le nombre de documents à comparer simultanément aux centroids (distance cosinus) en parallèle.
 
 **Réponse :**  
 Un message de confirmation indiquant le nombre d'itérations effectuées et le temps écoulé pour le clustering.
