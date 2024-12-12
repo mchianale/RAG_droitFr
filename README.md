@@ -19,12 +19,12 @@ Ce projet vise à développer une solution de recherche et d'extraction d'inform
 4. [Système de recherche par similarité](#système-de-recherche-par-similarité)
     - [Représentation des documents avec des embeddings](#1-représentation-des-documents-avec-des-embeddings)
     - [Comparaison des documents avec la distance cosinus](#2-comparaison-des-documents-avec-la-distance-cosinus)
-    - [Réduction de l'espace de recherche avec KNN](#3-réduction-de-lespace-de-recherche-avec-knn)
+    - [Réduction de l'espace de recherche avec KMeans](#3-réduction-de-lespace-de-recherche-avec-K-Means-Clustering) 
     - [Évaluation des clusters](#4-évaluation-des-clusters)
     - [Intérêt du système de clustering](#5-intérêt)
 5. [API](#api)
 6. [Amélioration / À faire](#amélioration-à-faire)
-    - [Améliorer le clustering (KNN)](#1-améliorer-le-clustering-knn)
+    - [Améliorer le clustering (KMeans)](#1-améliorer-le-clustering-KMeans)
     - [Interface ou outil de visualisation](#2-interface-ou-outil-de-visualisation)
     - [Utilisation de LLAMA 3.2 1B en local pour créer un chatbot](#3-utilisation-de-llama-32-1b-en-local-pour-créer-un-chatbot)
     - [Évaluation du système de retrieval du RAG avec un jeu de tests](#4-évaluation-du-système-de-retrieval-du-rag-avec-un-jeu-de-tests)
@@ -81,7 +81,7 @@ python get_data/create_sample.py
 
 ## Système de recherche par similarité
 
-Le système de recherche par similarité de ce projet repose sur plusieurs étapes clés : l'utilisation d'embeddings pour représenter les documents, la mesure de la similarité entre ces embeddings à l'aide de la distance cosinus, et l'optimisation de l'espace de recherche par clustering des documents à l'aide de K-Nearest Neighbors (KNN).
+Le système de recherche par similarité de ce projet repose sur plusieurs étapes clés : l'utilisation d'embeddings pour représenter les documents, la mesure de la similarité entre ces embeddings à l'aide de la distance cosinus, et l'optimisation de l'espace de recherche par clustering des documents à l'aide de KMeans.
 
 ### 1. Représentation des documents avec des embeddings
 
@@ -95,9 +95,9 @@ Une fois les documents convertis en embeddings, la comparaison des documents se 
 
 Où **A** et **B** sont les embeddings de deux documents et **|A|** et **|B|** sont leurs normes respectives.
 
-### 3. Réduction de l'espace de recherche avec KNN (K-Nearest Neighbors)
+### 3. Réduction de l'espace de recherche avec K-Means Clustering  
 
-Pour optimiser l'efficacité de la recherche, les documents sont regroupés en **clusters** à l'aide de l'algorithme **K-Nearest Neighbors (KNN)**. Cet algorithme permet de réduire l'espace de recherche en identifiant les documents similaires les uns aux autres et en les regroupant dans des clusters. La distance cosinus est utilisée comme critère pour définir les voisins les plus proches.
+Pour optimiser l'efficacité de la recherche, les documents sont regroupés en clusters à l'aide de l'algorithme **KMeans**. Cet algorithme divise les documents en groupes basés sur leurs similarités, mesurées par la distance cosinus entre les vecteurs.
 
 ### 4. Évaluation des clusters
 
@@ -122,7 +122,7 @@ L'intérêt du système de recherche par similarité avec **clustering** réside
 
 **Comparaison des complexités**
 
-Pour une même recherche de similarité d'une requête avec l'ensemble des données **n** documents), voici la comparaison des deux méthodes :
+Pour une même recherche de similarité d'une requête avec l'ensemble des données (**n** documents), voici la comparaison des deux méthodes :
 
 ##### 1. **Brute force (comparaison avec tous les documents)**
 
@@ -161,8 +161,8 @@ L'API de ce projet est construite avec **FastAPI** et permet d'interagir avec le
 ## Amélioration / À faire
 Voici une liste des améliorations et des tâches futures à mettre en place pour améliorer le projet :
 
-### 1. **Améliorer le clustering (KNN)**
-   - Le système actuel de clustering basé sur KNN est assez lent, surtout avec un grand nombre de documents. Il est nécessaire de l'optimiser pour gagner en performance, en utilisant des méthodes comme l'approximation de la recherche voisine (par exemple, avec HNSW) ou d'autres algorithmes plus efficaces.
+### 1. **Améliorer le clustering (KMeans)**
+   - Le système actuel de clustering basé sur KMeans est assez lent, surtout avec un grand nombre de documents. Il est nécessaire de l'optimiser pour gagner en performance, en utilisant des méthodes comme l'approximation de la recherche voisine (par exemple, avec HNSW) ou d'autres algorithmes plus efficaces.
 
 ### 2. **Interface ou outil de visualisation**
    - Développer une interface graphique ou un outil de visualisation pour permettre aux utilisateurs d'accéder facilement aux données. Cela pourrait inclure une interface pour explorer les clusters, visualiser les résultats de la recherche par similarité et interagir de manière plus intuitive avec les documents.
