@@ -37,9 +37,13 @@ Ce projet vise à développer une solution de recherche et d'extraction d'inform
 ```bash
 pip install -r requirements.txt
 ```
-
+- Run MongoDB:
 ```bash
 docker-compose up -d
+```
+- Run the Fast-API:
+```bash
+uvicorn app.main:app --reload
 ```
 
 **Initialiser la base de données avec les données récupérées:**
@@ -179,14 +183,3 @@ docker-compose up -d
 python populate_db.py
 uvicorn app.main:app --reload
 
-backend_service:
-    container_name: backend_service
-    build:
-      context: .
-      dockerfile: Dockerfile.app
-    ports:
-      - "8000:8000"   
-    depends_on:
-      - mongodb
-    networks:
-      - public   

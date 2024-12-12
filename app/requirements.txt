@@ -1,8 +1,0 @@
-torch 
-transformers 
-pymongo 
-numpy 
-fastapi 
-sentence-transformers 
-fastapi
-uvicorn

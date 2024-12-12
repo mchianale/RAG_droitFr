@@ -5,6 +5,7 @@ import numpy as np
 from sentence_transformers import SentenceTransformer
 import time 
 from tqdm import tqdm
+from threading import Thread
 
 class QueryService:
     def __init__(self, device):
@@ -65,35 +66,40 @@ class QueryService:
         ]
         return top_matching_documents
 
-    def clusterize(self,n_clusters, max_iter, tolerance, patience):
+    def threadCosineSim(self,current_doc, centroids, all_cluster_points):
+        current_doc_embedding = np.array(current_doc['embedding'])
+        cosine_similarities = np.dot(centroids, current_doc_embedding) / (np.linalg.norm(centroids, axis=1) * np.linalg.norm(current_doc_embedding))
+        cosine_distances = 1 - cosine_similarities
+        cluster_id = np.argmin(cosine_distances)  # Assign the closest centroid
+        all_cluster_points[int(cluster_id)].append(current_doc['_id'])
+
+    def clusterize(self,n_clusters, max_iter, tolerance, patience, chunk_size):
         start_time = time.time()
         # init
         centroids = np.array([doc['embedding'] for doc in self.collection_doc.aggregate([{'$sample': {'size': n_clusters}}])])
         ids = list(self.collection_doc.find({}, {'_id': 1}))
-    
-        labels = np.zeros(len(ids))
         unchanged_iter_count = 0  # Counter for iterations without significant change
-
         for iteration in range(max_iter):
             # Step 3.1: Assign each point to the closest centroid
-            i = 0
             all_cluster_points = [[] for _ in range(n_clusters)]
-            for id in tqdm(ids, desc=f'iteration {iteration}'):
-                current_doc = self.collection_doc.find_one({'_id': id['_id']})
-                #distances = np.linalg.norm(np.array(current_doc['embedding']) - centroids, axis=1)  # Calculate distance to each centroid
-                current_doc_embedding = np.array(current_doc['embedding'])
-                cosine_similarities = np.dot(centroids, current_doc_embedding) / (np.linalg.norm(centroids, axis=1) * np.linalg.norm(current_doc_embedding))
-                cosine_distances = 1 - cosine_similarities
-                labels[i] = np.argmin(cosine_distances)  # Assign the closest centroid
-                all_cluster_points[int(labels[i])].append(id['_id'])
-                i += 1
-
+            threads = []
+            for id_index in tqdm(range(0, len(ids), chunk_size), desc=f'iteration: {iteration}, unchanged_iter_count: {unchanged_iter_count}'):
+                ids_values = [id['_id']  for id in ids[id_index:id_index+chunk_size]]
+                current_docs = list(self.collection_doc.find({"_id": {"$in": ids_values}}))
+                for current_doc in current_docs:
+                    thread = Thread(target=self.threadCosineSim, args=(current_doc, centroids, all_cluster_points,))  
+                    thread.start()
+                    threads.append(thread)
+                for thread in threads:
+                    thread.join()
+                threads = []        
+    
             # Step 3.2: Update the centroids
             new_centroids = np.zeros_like(centroids)
-            for j in range(n_clusters):
-                cluster_points = np.array([doc['embedding'] for doc in self.collection_doc.find({"_id": {"$in": all_cluster_points[j]}})])
+            for i in range(n_clusters):
+                cluster_points = np.array([doc['embedding'] for doc in self.collection_doc.find({"_id": {"$in": all_cluster_points[i]}})])
                 if cluster_points.shape[0] > 0:
-                    new_centroids[j] = np.mean(cluster_points, axis=0) 
+                    new_centroids[i] = np.mean(cluster_points, axis=0) 
             
             # Step 3.3: Check for convergence (if centroids don't change, stop early)
             centroid_change = np.linalg.norm(new_centroids - centroids)  # Calculate the change in centroids
@@ -123,16 +129,19 @@ class QueryService:
             self.collection_centroid.delete_many({})
 
         # add centroids to db   
+        id = 0
         for i in range(centroids.shape[0]):
-            self.collection_centroid.insert_one({
-                'cluster_id' : i,
-                'embedding' : centroids[i].tolist()
-            })
-            # update documents 
-            self.collection_doc.update_many(
-                {"_id": {"$in": all_cluster_points[i]}},  # Find documents where the 'id' is in ids_to_update
-                {"$set": {"cluster_id": i}}      # Add or update the 'cluster_id' field to j
-            )
+            if len(all_cluster_points[i]) != 0:     
+                self.collection_centroid.insert_one({
+                    'cluster_id' : id,
+                    'embedding' : centroids[i].tolist()
+                })
+                # update documents 
+                self.collection_doc.update_many(
+                    {"_id": {"$in": all_cluster_points[i]}},  # Find documents where the 'id' is in ids_to_update
+                    {"$set": {"cluster_id": id}}      # Add or update the 'cluster_id' field to j
+                )
+            id += 1
 
         self.collection_centroid.create_index([('cluster_id', ASCENDING)], unique=True)
         self.collection_doc.create_index([('cluster_id', ASCENDING)])

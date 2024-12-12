@@ -26,8 +26,8 @@ async def query_documents(query: str, limit: int = 10):
     return query_service.query_documents(query=query, limit=limit)
 
 @app.post("/clusterize")
-async def clusterize(n_clusters: int, max_iter: int = 300, tolerance: float = 1e-4, patience: int = 10):
-    return query_service.clusterize(n_clusters=n_clusters, max_iter=max_iter, tolerance=tolerance, patience=patience)
+async def clusterize(n_clusters: int, max_iter: int = 300, tolerance: float = 1e-4, patience: int = 10, chunk_size: int = 32):
+    return query_service.clusterize(n_clusters=n_clusters, max_iter=max_iter, tolerance=tolerance, patience=patience, chunk_size=chunk_size)
 
 @app.post("/insert_new_document")
 async def insert_new_document(doc : Dict):
@@ -35,7 +35,7 @@ async def insert_new_document(doc : Dict):
 
 
 @app.post("/insert_new_documents")
-async def insert_new_document(docs : List[Dict], chunk_size : int = 8):
+async def insert_new_document(docs : List[Dict], chunk_size : int = 32):
     threads = []
     for i in range(0, len(docs), chunk_size):
         for doc in docs[i:i+chunk_size]:
