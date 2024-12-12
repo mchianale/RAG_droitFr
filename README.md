@@ -10,17 +10,28 @@ Ce projet vise à développer une solution de recherche et d'extraction d'inform
 
 ---
 ### Exemple de requête 
-`Quelles sont les conditions légales pour se marier en France ?` :
+1. `Quelles sont les conditions légales pour se marier en France ?` :
 ```json
- [
-   {
+{
         "text": "\nPour être opposable aux tiers en France, l'acte de mariage d'un Français célébré par une autorité étrangère\ndoit être transcrit sur les registres de l'état civil français. En l'absence de transcription, le mariage d'un\nFrançais, valablement célébré par une autorité étrangère, produit ses effets civils en France à l'égard des\népoux et des enfants.\nLes futurs époux sont informés des règles prévues au premier alinéa à l'occasion de la délivrance du certificat\nde capacité à mariage.\nLa demande de transcription est faite auprès de l'autorité consulaire ou diplomatique compétente au regard\ndu lieu de célébration du mariage.",
         "cosine_similarity": 0.8375268358093255
-    },
-    {
-        "text": "En France, le droit des régimes matrimoniaux est une branche du droit regroupant les règles qui s'appliquent aux époux liés par le mariage pendant leur vie commune et au moment de la dissolution de leur union. La gestion des biens, les obligations pécuniaires des époux envers les tiers, leurs obligations familiales, la composition de leurs patrimoines (biens communs, propres ou indivis) pendant et après le mariage sont décrits dans leur régime matrimonial.\nIl existe deux grandes catégories de régimes matrimoniaux : \n\nles régimes communautaires, dans lesquels la plupart des biens appartiennent en commun aux époux ;\nles régimes séparatistes, dans lesquels l'un des époux, ou les deux, est ou a vocation à être, à la tête d'un patrimoine personnel et où chacun répond seul de ses dettes.\nLe droit français laisse la liberté aux époux de choisir leur régime matrimonial en rédigeant un contrat de mariage au moment du mariage ou, éventuellement, pendant la vie commune. Cette liberté de choix est prévue par l'article 1387 du Code civil et permet aux intéressés d'organiser comme ils le désirent leurs relations patrimoniales, sous réserves de respecter un minimum de règles communes que l'on nomme le statut impératif de base. À défaut de contrat de mariage, la loi française prévoit que les époux seront soumis à l'un d'eux que l'on appelle le régime légal et qui est, depuis 1966, la communauté réduite aux acquêts.",
-        "cosine_similarity": 0.8304367584434162
-    }]
+}
+```
+
+2. `Quelles sont les différentes procédures de divorce en France ?` :
+```json
+{
+        "text": "En France, la procédure de divorce est l'ensemble des formalités et démarches à suivre afin d'obtenir la rupture officielle d’un mariage précédemment célébré entre deux personnes. C'est le juge aux affaires familiales, dit le JAF, un magistrat généraliste du tribunal judiciaire, qui est compétent dans le cadre des affaires de rupture de mariage.",
+        "cosine_similarity": 0.8622493270557036
+}
+```
+
+3. `Comment se déroule un procès pénal en France ?` :
+```json
+{
+        "text": "La composition pénale est, en France, une mesure que peut prendre le procureur de la République dans le cadre d'une procédure alternative aux poursuites. Prévue à l'art. 41-2 du code de procédure pénale, la composition pénale est introduite en droit français par la loi n° 99-515 du 23 juin 1999 renforçant l'efficacité de la procédure pénale. Elle fait suite à la procédure d'injonction pénale qui avait été déclarée inconstitutionnelle en 1995 pour défaut de saisine d'un magistrat du siège. L'idée est que l'on reconnaît ses fautes pour mettre fin au contentieux.\nCette procédure permet au procureur de la République de proposer, dans les cas définis par la loi, une ou plusieurs sanctions pénales (éventuellement assortie d'une ou plusieurs contraventions) à une personne physique qui reconnaît avoir commis un ou plusieurs délits. La proposition du procureur peut être acceptée ou refusée par la personne concernée.",
+        "cosine_similarity": 0.8622493270557036
+}
 ```
 ---
 
