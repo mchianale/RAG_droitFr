@@ -9,6 +9,19 @@ Ce projet vise à développer une solution de recherche et d'extraction d'inform
 4. **Création d'une API (FastAPI)** : Développement d'une API permettant d'interroger et d'insérer des documents dans le système, facilitant ainsi l'accès et la gestion des données juridiques.
 
 ---
+### Exemple de requête 
+`Quelles sont les conditions légales pour se marier en France ?` :
+```json
+ {
+        "text": "\nPour être opposable aux tiers en France, l'acte de mariage d'un Français célébré par une autorité étrangère\ndoit être transcrit sur les registres de l'état civil français. En l'absence de transcription, le mariage d'un\nFrançais, valablement célébré par une autorité étrangère, produit ses effets civils en France à l'égard des\népoux et des enfants.\nLes futurs époux sont informés des règles prévues au premier alinéa à l'occasion de la délivrance du certificat\nde capacité à mariage.\nLa demande de transcription est faite auprès de l'autorité consulaire ou diplomatique compétente au regard\ndu lieu de célébration du mariage.",
+        "cosine_similarity": 0.8375268358093255
+    },
+    {
+        "text": "En France, le droit des régimes matrimoniaux est une branche du droit regroupant les règles qui s'appliquent aux époux liés par le mariage pendant leur vie commune et au moment de la dissolution de leur union. La gestion des biens, les obligations pécuniaires des époux envers les tiers, leurs obligations familiales, la composition de leurs patrimoines (biens communs, propres ou indivis) pendant et après le mariage sont décrits dans leur régime matrimonial.\nIl existe deux grandes catégories de régimes matrimoniaux : \n\nles régimes communautaires, dans lesquels la plupart des biens appartiennent en commun aux époux ;\nles régimes séparatistes, dans lesquels l'un des époux, ou les deux, est ou a vocation à être, à la tête d'un patrimoine personnel et où chacun répond seul de ses dettes.\nLe droit français laisse la liberté aux époux de choisir leur régime matrimonial en rédigeant un contrat de mariage au moment du mariage ou, éventuellement, pendant la vie commune. Cette liberté de choix est prévue par l'article 1387 du Code civil et permet aux intéressés d'organiser comme ils le désirent leurs relations patrimoniales, sous réserves de respecter un minimum de règles communes que l'on nomme le statut impératif de base. À défaut de contrat de mariage, la loi française prévoit que les époux seront soumis à l'un d'eux que l'on appelle le régime légal et qui est, depuis 1966, la communauté réduite aux acquêts.",
+        "cosine_similarity": 0.8304367584434162
+    }
+```
+---
 
 # Sommaire
 1. [Run](#run)
