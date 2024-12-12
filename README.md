@@ -162,7 +162,7 @@ L'API de ce projet est construite avec **FastAPI** et permet d'interagir avec le
 Voici une liste des améliorations et des tâches futures à mettre en place pour améliorer le projet :
 
 ### 1. **Améliorer le clustering (KMeans)**
-   - Le système actuel de clustering basé sur KMeans est assez lent, surtout avec un grand nombre de documents. Il est nécessaire de l'optimiser pour gagner en performance, en utilisant des méthodes comme l'approximation de la recherche voisine (par exemple, avec HNSW) ou d'autres algorithmes plus efficaces.
+   - Le système actuel de création des clusters basé sur KMeans est assez lent, surtout avec un grand nombre de documents. Il est nécessaire de l'optimiser pour gagner en performance, en utilisant des méthodes comme l'approximation de la recherche voisine (par exemple, avec HNSW) ou d'autres algorithmes plus efficaces.
 
 ### 2. **Interface ou outil de visualisation**
    - Développer une interface graphique ou un outil de visualisation pour permettre aux utilisateurs d'accéder facilement aux données. Cela pourrait inclure une interface pour explorer les clusters, visualiser les résultats de la recherche par similarité et interagir de manière plus intuitive avec les documents.
