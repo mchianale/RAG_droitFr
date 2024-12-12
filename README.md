@@ -110,6 +110,7 @@ Crée un fichier Python qui récupère `N` données choisies aléatoirement (à 
 ```bash
 python get_data/create_sample.py
 ```
+voir **[exemple de donnée](https://github.com/mchianale/RAG_droitFr/blob/main/get_data/sample.json)**.
 
 ---
 
