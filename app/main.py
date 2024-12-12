@@ -4,6 +4,7 @@ import torch
 from typing import Dict, List
 from threading import Thread
 
+
 # Initialize FastAPI app and QueryService
 app = FastAPI()
 query_service = QueryService(device=torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
@@ -26,8 +27,8 @@ async def query_documents(query: str, limit: int = 10):
     return query_service.query_documents(query=query, limit=limit)
 
 @app.post("/clusterize")
-async def clusterize(n_clusters: int, max_iter: int = 300, tolerance: float = 1e-4, patience: int = 10, chunk_size: int = 32):
-    return query_service.clusterize(n_clusters=n_clusters, max_iter=max_iter, tolerance=tolerance, patience=patience, chunk_size=chunk_size)
+async def clusterize(n_clusters: int, chunk_size: int = 1000):
+    return query_service.clusterize(n_clusters=n_clusters, chunk_size=chunk_size)
 
 @app.post("/insert_new_document")
 async def insert_new_document(doc : Dict):
