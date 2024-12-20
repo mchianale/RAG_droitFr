@@ -42,9 +42,10 @@ def read_pdf_with_formatting(file_path, code, info):
     
      
     doc = fitz.open(file_path)
-    parts = [None, None, None, None, None, None]
-    names = ["partie", "livre", "titre", "chapitre", "section", "sous-section"]
+    parts = [None, None, None, None, None, None, None]
+    names = ["partie", "livre", "titre", "chapitre", "section", "sous-section", "paragraphe"]
     article_name, current_article = "", ""
+    last_update = None
     for page_num in tqdm(range(len(doc)), desc=code):
         page = doc.load_page(page_num)
         #print(f"\nPage {page_num + 1}:")
@@ -70,7 +71,7 @@ def read_pdf_with_formatting(file_path, code, info):
                                 article_obj = {"code" : code}
                                 for i in range(len(parts)):
                                     if not parts[i]:
-                                        break
+                                        continue
                                     article_obj[names[i]] = parts[i]
                                 article_obj["article"] = article_name.replace("*", "_")
                                 article_obj["text"] = current_article
@@ -96,7 +97,7 @@ def read_pdf_with_formatting(file_path, code, info):
                                 article_obj = {"code" : code}
                                 for i in range(len(parts)):
                                     if not parts[i]:
-                                        break
+                                        continue
                                     article_obj[names[i]] = parts[i]
                                 article_obj["article"] = article_name.replace("*", "_")
                                 article_obj["text"] = current_article
@@ -114,25 +115,39 @@ def read_pdf_with_formatting(file_path, code, info):
                             article_name = ""
 
                             if first_letter == "P":
-                                parts = updateParts(parts=parts, start=1)
-                                parts[0] = text
+                                if "aragraphe" in text:
+                                    parts = updateParts(parts=parts, start=6)
+                                    parts[-1] = text
+                                    last_update = -1
+                                else:
+                                    parts = updateParts(parts=parts, start=1)
+                                    parts[0] = text
+                                    last_update = 0
                             elif first_letter == "L":
                                 parts = updateParts(parts=parts, start=2)
                                 parts[1] = text
+                                last_update = 1
                             elif first_letter == "T":
                                 parts = updateParts(parts=parts, start=3)
                                 parts[2] = text
+                                last_update = 2
                             elif first_letter == "C":
                                 parts = updateParts(parts=parts, start=4)
                                 parts[3] = text 
+                                last_update = 3
                             elif first_letter == "S":
                                 if "-" in text:
                                     parts[5] = text
+                                    last_update = 5
                                 else:
                                     parts = updateParts(parts=parts, start=5)
                                     parts[4] = text
+                                    last_update = 4
+                            elif last_update is not None:
+                                parts[last_update] += text
 
                         elif text != "":
+                            last_update = None
                             current_article += '\n' + text
 
     # add last article
@@ -140,7 +155,7 @@ def read_pdf_with_formatting(file_path, code, info):
         article_obj = {"code" : code}
         for i in range(len(parts)):
             if not parts[i]:
-                break
+                continue
             article_obj[names[i]] = parts[i]
         article_obj["article"] = article_name.replace("*", "_")
         article_obj["text"] = current_article
